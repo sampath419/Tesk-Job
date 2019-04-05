@@ -1,0 +1,23 @@
+<% if @job_poster.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @job_poster.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_with model: @job_poster, local: true do |form| %>
+    <div class="field_with_errors">
+      <%= form.label(:first_name, for: :job_poster_first_name) %>
+      <%= form.text_field(:first_name, id: :job_poster_first_name, class: "form-control") %>
+    </div>
+
+    <div class="field_with_errors">
+      <%= form.label(:last_name, for: :job_poster_last_name) %>
+      <%= form.text_field(:last_name, id: :job_poster_last_name, class: "form-control") %>
+    </div><br />
+    <%= form.submit "Save", class: "btn btn-default action-btn" %>
+<% end %>
+
